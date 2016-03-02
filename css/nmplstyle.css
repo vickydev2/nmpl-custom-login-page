@@ -1,0 +1,38 @@
+		.bg-img_con{
+			position: relative;
+			width:150px;
+		}
+		.bg-img_con:hover .bg-edit-delete {
+			display: block;
+		}
+		.bg-edit-delete {
+			padding-top: 7px;	
+			padding-right: 7px;
+			position: absolute;
+			top:0;
+			right:0;
+			display: none;
+		}
+
+		.bg-edit-delete a {
+			color: #000;
+		}
+		.lg-img-con{
+			position: relative;
+			width:150px;
+		}
+		.lg-img-con:hover .lg-edit-delete {
+			display: block;
+		}
+		.lg-edit-delete {
+			padding-top: 7px;	
+			padding-right: 7px;
+			position: absolute;
+			top:0;
+			right:0;
+			display: none;
+		}
+
+		.lg-edit-delete a {
+			color: #000;
+		}

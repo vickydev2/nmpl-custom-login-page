@@ -13,6 +13,9 @@
 add_action( 'admin_enqueue_scripts', 'nomagic_resources' );
 function nomagic_resources(){
 wp_enqueue_media();
+wp_enqueue_style( 'nmpl-style', plugin_dir_url( __FILE__ ) . 'css/nmplstyle.css' );
+wp_enqueue_style( 'icon-lib', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' );
+
 wp_enqueue_script( 'jquery_lib', plugin_dir_url( __FILE__ ) . 'js/jquery.min.js' );
 wp_enqueue_script( 'nmpl_custom_script', plugin_dir_url( __FILE__ ) . 'js/myscript.js' );
 }
@@ -88,10 +91,22 @@ function nmpl_bg_img_prv_cl_bck_fun(){
 	$bg_img_attachment_id=$options["nmpl_stng_id_bg_img"];
 	$bg_img_path= wp_get_attachment_url( $bg_img_attachment_id );
 	if(isset($bg_img_attachment_id)&&!empty($bg_img_attachment_id)){
-		echo '<image width="150px" height="150px" src="'.$bg_img_path.'" class="nmpl_bg_img_preview" >';
+		echo '<div class="bg-img_con">
+				<image width="150px" height="150px" src="'.$bg_img_path.'" class="nmpl_bg_img_preview" >
+				<div class="bg-edit-delete"><a href="#"><i class="fa fa-pencil fa-lg bg-edit-icon"></i></a>
+					<a href="#"><i class="fa fa-times fa-lg bg-delete-icon"></i></a>
+				</div>
+			</div>
+		';
 	}
 	else {
-		echo '<image width="150px" height="150px" src="" class="nmpl_bg_img_preview" style="display:none">';
+		echo '<div class="bg-img_con">
+		<image width="150px" height="150px" src="" class="nmpl_bg_img_preview" style="display:none">
+		<div class="bg-edit-delete"><a href="#"><i class="fa fa-pencil fa-lg bg-edit-icon"></i></a>
+			<a href="#"><i class="fa fa-times fa-lg bg-delete-icon"></i></a>
+		</div>
+		</div>
+		';
 	}
 	?>
 	<div class="nmpl_bg_img_div">
@@ -107,10 +122,21 @@ function nmpl_logo_img_prv_cl_bck_fun(){
 	$logo_img_attachment_id=$options["nmpl_stng_id_logo_img"];
 	$logo_img_path= wp_get_attachment_url( $logo_img_attachment_id );
 	if(isset($logo_img_attachment_id)&&!empty($logo_img_attachment_id)){
-		echo '<image width="150px" height="150px" src="'.$logo_img_path.'" class="nomagic_logo_preview" >';
+		echo '<div class="lg-img-con">
+		<image width="150px" height="150px" src="'.$logo_img_path.'" class="nomagic_logo_preview" >
+		<div class="lg-edit-delete"><a href="#"><i class="fa fa-pencil fa-lg lg-edit-icon"></i></a>
+			<a href="#"><i class="fa fa-times fa-lg lg-delete-icon"></i></a>
+		</div>
+		</div>';
 	}
 	else {
-		echo '<image width="150px" height="150px" src="" class="nomagic_logo_preview" style="display:none">';
+		echo '<div class="lg-img-con">
+		<image width="150px" height="150px" src="" class="nomagic_logo_preview" style="display:none">
+		<div class="lg-edit-delete"><a href="#"><i class="fa fa-pencil fa-lg lg-edit-icon"></i></a>
+			<a href="#"><i class="fa fa-times fa-lg lg-delete-icon"></i></a>
+		</div>
+		</div>
+		';
 	}
 	?>
 	<div class="nomagic_logo_img_div">
@@ -143,6 +169,7 @@ function nmpl_login_logo() {
 			body.login {
 			background: #fbfbfb url('<?php echo $bg_img_path;?>') no-repeat fixed center;
 			}
+		
 		</style>
 		<?php
 		} ?>
